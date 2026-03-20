@@ -48,3 +48,41 @@ export const getCalls = async (req, res) => {
     });
   }
 };
+
+// 🔹 Update Call Status (NEW FEATURE)
+export const updateCallStatus = async (req, res) => {
+  try {
+    const { status } = req.body;
+
+    // Optional validation
+    if (!status) {
+      return res.status(400).json({
+        message: "Status is required",
+      });
+    }
+
+    const updatedCall = await Call.findByIdAndUpdate(
+      req.params.id,
+      { status },
+      { new: true },
+    )
+      .populate("agent", "name email")
+      .populate("customer", "name phone email");
+
+    if (!updatedCall) {
+      return res.status(404).json({
+        message: "Call not found",
+      });
+    }
+
+    res.status(200).json({
+      message: "Call status updated successfully",
+      data: updatedCall,
+    });
+  } catch (error) {
+    console.error("Update Call Error:", error);
+    res.status(500).json({
+      message: "Server error while updating call",
+    });
+  }
+};

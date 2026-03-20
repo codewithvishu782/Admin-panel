@@ -5,14 +5,16 @@ const callSchema = new mongoose.Schema(
     customer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Customer",
+      required: true,
     },
     agent: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Agent",
+      required: true,
     },
     status: {
       type: String,
-      enum: ["Pending", "Completed", "Interested", "Not Interested"],
+      enum: ["Pending", "Interested", "Not Interested"],
       default: "Pending",
     },
   },

@@ -26,7 +26,7 @@ export default function Sidebar() {
     { name: "Customers", path: "/customers", icon: <Users size={18} /> },
     { name: "Calls", path: "/calls", icon: <PhoneCall size={18} /> },
     { name: "Analytics", path: "/analytics", icon: <BarChart3 size={18} /> },
-    { name: "Reports", path: "/reports", icon: <FileText size={18} /> },
+    // { name: "Reports", path: "/reports", icon: <FileText size={18} /> },
     { name: "Uploads", path: "/uploads", icon: <Upload size={18} /> },
   ];
 
